@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GenreController!
+{% endblock %}
+
+{% block body %}
+	<div class="container p-3 my-3">
+		<div class="jumbotron">
+			<center>
+				<h1>Les genres</h1>
+				<div class="card" style="width:400px">
+					<div class="card-body">
+						{% for leGenre in uneSerie.lesGenres %}
+							<img class="card-img-top" src="{{uneSerie.image}}">
+							<h5 class="card-title">{{uneSerie.titre}}</h5>
+							<p class="card-title">
+								{{leGenre.libelle}}
+							</p>
+							<br>
+							<br>
+						{% endfor %}
+					</div>
+				</center>
+			</div>
+		</div>
+	{% endblock %}
