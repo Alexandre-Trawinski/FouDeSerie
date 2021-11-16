@@ -16,9 +16,10 @@ class SerieController extends AbstractController
     public function index(): Response
     {
         $repository = $this->getDoctrine()->getRepository(Serie::class);
-
         $lesSeries = $repository->findAll();
-        return $this->render('home/series.html.twig', ['series' => $lesSeries]);
+        $repository = $this->getDoctrine()->getRepository(Genre::class);
+        $lesGenres = $repository->findAll();
+        return $this->render('serie/index.html.twig', ['lesSeries' => $lesSeries, 'lesGenres' => $lesGenres]);
     }
 
     /**
@@ -41,6 +42,8 @@ class SerieController extends AbstractController
 
         $leGenre = $repository->find($id);
         $series = $leGenre->getLesSeries();
-        return $this->render('serie/index.html.twig', ['lesSeries' => $series]);
+        $repository = $this->getDoctrine()->getRepository(Genre::class);
+        $lesGenres = $repository->findAll();
+        return $this->render('serie/index.html.twig', ['lesSeries' => $series, 'lesGenres' => $lesGenres]);
     }
 }

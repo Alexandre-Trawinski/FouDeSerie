@@ -5,6 +5,7 @@
 
 {% block body %}
 	<div class="container">
+		{{include('genre/lesGenres.html.twig')}}
 		<div class="row mt-5">
 			{% for laSerie in lesSeries %}
 				<div class="col-md-4">
