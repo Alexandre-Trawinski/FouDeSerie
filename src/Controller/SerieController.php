@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Genre;
 use App\Entity\Serie;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -29,5 +30,17 @@ class SerieController extends AbstractController
 
         $laSerie = $repository->find($id);
         return $this->render('serie/uneSerie.html.twig', ['laSerie' => $laSerie]);
+    }
+
+    /**
+     * @Route("/series/genres/{id}", name="uneSerieByGenre")
+     */
+    public function ListeSeriesByGenre($id): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Genre::class);
+
+        $leGenre = $repository->find($id);
+        $series = $leGenre->getLesSeries();
+        return $this->render('serie/index.html.twig', ['lesSeries' => $series]);
     }
 }

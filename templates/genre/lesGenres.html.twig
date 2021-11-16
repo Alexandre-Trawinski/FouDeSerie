@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GenreController!
+{% endblock %}
+
+{% block body %}
+	<div class="container p-3 my-3">
+		<div class="jumbotron">
+			<center>
+				<h1>Les genres</h1>
+				<br>
+				{% for leGenre in lesGenres %}
+					<a href="{{path('uneSerieByGenre', {'id':leGenre.id})}}" class="btn btn-primary">{{leGenre.libelle}}</a>
+				{% endfor %}
+			</center>
+		</div>
+	</div>
+{% endblock %}

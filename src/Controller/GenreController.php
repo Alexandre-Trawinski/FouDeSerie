@@ -40,4 +40,15 @@ class GenreController extends AbstractController
         $em->flush();
         return $this->render('genre/index.html.twig', ['uneSerie' => $uneSerie]);
     }
+
+    /**
+     * @Route("/genres", name="genres")
+     */
+    public function ListeGenre(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Genre::class);
+
+        $lesGenres = $repository->findAll();
+        return $this->render('genre/lesGenres.html.twig', ['lesGenres' => $lesGenres]);
+    }
 }

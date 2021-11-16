@@ -11,7 +11,7 @@
 
 
 		{# Run `composer require symfony/webpack-encore-bundle`
-																																				           and uncomment the following Encore helpers to start using Symfony UX #}
+																																						           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
 		{% endblock %}
@@ -34,6 +34,9 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="{{path('series')}}">Liste des séries</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{path('genres')}}">Les genres</a>
 				</li>
 			</ul>
 
