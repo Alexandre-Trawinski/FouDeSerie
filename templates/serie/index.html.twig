@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello SerieController!
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row mt-5">
+			{% for laSerie in lesSeries %}
+				<div class="col-md-4">
+					<div class="card" styme="width: 18rem">
+						<img class="card-img-top" src="{{laSerie.image}}" alt="">
+						<div class="card-body">
+							<h5 class="card-title">{{laSerie.titre}}</h5>
+							<a href="{{path('laSerie', {'id':laSerie.id})}}" class="btn btn-primary">En savoir plus</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}

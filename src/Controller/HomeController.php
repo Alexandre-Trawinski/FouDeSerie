@@ -22,11 +22,13 @@ class HomeController extends AbstractController
      */
     public function news(): Response
     {
-        return $this->render('home/news.html.twig');
+        $respository = $this->getDoctrine()->getRepository(Serie::class);
+        $laSerie = $respository->getFourSeries();
+        return $this->render('home/news.html.twig', ['series' => $laSerie]);
     }
 
     /**
-     * @Route("/testEntity", name="news")
+     * @Route("/testEntity", name="testEntity")
      */
     public function testEntity(): Response
     {

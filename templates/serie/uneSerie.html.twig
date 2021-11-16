@@ -21,18 +21,16 @@
 	<div class="container p-3 my-3">
 		<div class="jumbotron">
 			<center>
-				<h1>Les 4 dernière séries</h1>
+				<h1>Les séries</h1>
 				<div class="card" style="width:400px">
 					<div class="card-body">
-						{% for laSerie in series %}
-							<img class="card-img-top" src="{{laSerie.image}}"></li>
-						<h5 class="card-title">{{laSerie.titre}}</h5>
-						<a href="{{path('laSerie', {'id':laSerie.id})}}" class="btn btn-primary">En savoir plus</a>
-						<br>
-						<br>
-					{% endfor %}
+						<img class="card-img-top" src="{{laSerie.image}}"></li>
+					<h5 class="card-title">{{laSerie.titre}}</h5>
+					<p class="card-text">{{laSerie.resume}}</p>
+					<p class="card-text">{{laSerie.duree|date('H:i:s')}}</p>
+					<p class="card-text">{{laSerie.premiereDiffusion|date('d/m/Y')}}</p>
 				</div>
 			</center>
 		</div>
 	</div>
-{% endblock %}
+</div>{% endblock %}

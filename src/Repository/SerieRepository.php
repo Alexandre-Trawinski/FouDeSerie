@@ -19,6 +19,17 @@ class SerieRepository extends ServiceEntityRepository
         parent::__construct($registry, Serie::class);
     }
 
+
+    public function getFourSeries()
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.premierediffusion', 'ASC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult();
+    }
+
+
     // /**
     //  * @return Serie[] Returns an array of Serie objects
     //  */
