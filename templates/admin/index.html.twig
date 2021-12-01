@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une série
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		{{form_start(Form)}}
+		{{form_row(Form.titre)}}
+		{{form_row(Form.resume)}}
+		{{form_row(Form.duree)}}
+		{{form_row(Form.premierediffusion)}}
+		{{form_row(Form.lesGenres)}}
+		{{form_row(Form.image)}}
+		<input type="submit" value="Sauvegarder">
+		{{form_end(Form)}}
+	</div>
+{% endblock %}
