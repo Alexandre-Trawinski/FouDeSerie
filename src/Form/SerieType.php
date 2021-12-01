@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Genre;
 use App\Entity\Serie;
+use App\Repository\GenreRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +26,11 @@ class SerieType extends AbstractType
                 array(
                     'class' => Genre::class,
                     'choice_label' => 'libelle', // libelle est la propriété de l'entité Genre que l'on veut afficher
-                    'multiple' => true // permet la sélection multiple
+                    'multiple' => true, // permet la sélection multiple
+                    'expanded' => true,
+                    'query_builder' => function (GenreRepository $gr) {
+                        return $gr->genreByOrder();
+                    }
                 )
             );
     }
