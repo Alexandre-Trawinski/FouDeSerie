@@ -29,4 +29,34 @@ class AdminController extends AbstractController
             'Form' => $form->createView(),
         ]);
     }
+
+
+    /**
+     * @Route("/admin/series/delete", name="deleteSerie")
+     */
+    public function delete(): Response
+    {
+        $repository = $this->getDoctrine()->getRepository(Serie::class);
+        $lesSeries = $repository->findAll();
+
+        return $this->render('admin/supprimer.html.twig', [
+            'lesSeries' => $lesSeries
+        ]);
+    }
+
+    /**
+     * @Route("/admin/series/delete/{id}", name="deleteUneSerie", methods="DELETE")
+     */
+    public function deleteUneSerie(Request $request, $id): Response
+    {
+        $token = $request->get('token');
+        $nomToken = "delete_serie" . $id;
+        if ($this->isCsrfTokenValid($nomToken, $token)) {
+            $em = $this->getDoctrine()->getManager();
+            $serie = $em->getRepository(Serie::class)->find($id);
+            $em->remove($serie);
+            $em->flush();
+        }
+        return $this->redirectToRoute('deleteSerie');
+    }
 }
