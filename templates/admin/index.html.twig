@@ -1,18 +1,43 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+	<script type="text/javascript" src="{{asset("js/validForm.js")}}"></script>
+	<script src="https://cdn.jsdelivr.net/npm/tom-select@2.0.1/dist/js/tom-select.complete.min.js"></script>
+	<script type="text/javascript" src="{{asset("js/form.js")}}"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	<link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.1/dist/css/tom-select.css" rel="stylesheet">
+{% endblock %}
+
 {% block title %}Ajouter une série
 {% endblock %}
 
 {% block body %}
+
+
 	<div class="container">
 		{{form_start(Form)}}
-		{{form_row(Form.titre)}}
-		{{form_row(Form.resume)}}
-		{{form_row(Form.duree)}}
-		{{form_row(Form.premierediffusion)}}
-		{{form_row(Form.lesGenres)}}
-		{{form_row(Form.image)}}
-		<input type="submit" value="Sauvegarder">
-		{{form_end(Form)}}
+		<b class="fa fa-calendar">Titre</b>
+		{{ form_widget(Form.titre) }}
+		<br>
+		<b class="fa fa-calendar">Résume</b>
+		{{ form_widget(Form.resume) }}
+		<br>
+		<b class="fa fa-calendar">Durée</b>
+		{{ form_widget(Form.duree) }}
+		<br>
+		<b class="fa fa-calendar">Première diffusion</b>
+		{{ form_widget(Form.premierediffusion) }}
+		<br>
+		<b class="fa fa-calendar">Les genres</b>
+		{{ form_widget(Form.lesGenres) }}
+		<br>
+		<b class="fa fa-calendar">Image</b>
+		{{ form_widget(Form.image) }}
+		<br>
+		<span class="text-danger" id="erreur"></span>
+		<input type="submit" class="btn btn-dark btn-lg btn-block" style="margin-top:2%; margin-bottom:2%" value="Sauvegarder" id="sauvegarder">
 	</div>
+	{{form_end(Form)}}
 {% endblock %}

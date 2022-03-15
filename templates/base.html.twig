@@ -8,22 +8,14 @@
 		</title>
 		<link
 		rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-
-		{# Run `composer require symfony/webpack-encore-bundle`
-																																																		           and uncomment the following Encore helpers to start using Symfony UX #}
+		{# Run `composer require symfony/webpack-encore-bundle`																																																			           and uncomment the following Encore helpers to start using Symfony UX #}
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
-		{% endblock %}
-
-		{% block javascripts %}
-			{#{{ encore_entry_script_tags('app') }}#}
 		{% endblock %}
 	</head>
 	<body>
 		<nav
 			class="navbar navbar-expand-sm bg-light">
-
 			<!-- Links -->
 			<ul class="navbar-nav">
 				<li class="nav-item">
@@ -49,5 +41,8 @@
 		</nav>
 		{% block body %}{% endblock %}
 
+		{% block javascripts %}
+			{#{{ encore_entry_script_tags('app') }}#}
+		{% endblock %}
 	</body>
 </html>

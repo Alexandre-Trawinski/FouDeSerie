@@ -9,6 +9,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
+
 
 class SerieType extends AbstractType
 {
@@ -17,8 +20,15 @@ class SerieType extends AbstractType
         $builder
             ->add('titre')
             ->add('resume')
-            ->add('duree')
-            ->add('premierediffusion')
+            ->add('duree', TimeType::class, array(
+                'input'  => 'datetime',
+                'widget' => 'choice',
+            ))
+            ->add('premierediffusion', DateType::class, array(
+                "widget" => 'single_text',
+                "format" => 'yyyy-MM-dd',
+                "data" => new \DateTime()
+            ))
             ->add('image')
             ->add(
                 'lesGenres',
@@ -27,7 +37,6 @@ class SerieType extends AbstractType
                     'class' => Genre::class,
                     'choice_label' => 'libelle', // libelle est la propriété de l'entité Genre que l'on veut afficher
                     'multiple' => true, // permet la sélection multiple
-                    'expanded' => true,
                     'query_builder' => function (GenreRepository $gr) {
                         return $gr->genreByOrder();
                     }
